@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Author: Marcelino Feliciano de Sousa
+    Em : 08/06/2019
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="conteudo">
+        <p:toolbar> 
+            <f:facet name="right">
+                <p:commandButton value="Novo" icon="ui-icon-document" actionListener="#{categoriaBean.novo()}"/>
+                <p:commandButton value="Salvar" icon="ui-icon-disk" actionListener="#{categoriaBean.salvar()}"/>
+                 <span class="ui-separator">
+                    <span class="ui-icon pi pi-ellipsis-v" />
+                </span>
+                     <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{categoriaBean.editar()}"/>
+                     <p:commandButton value="Excluir" icon="ui-icon-trash" actionListener="#{categoriaBean.excluir()}"/>
+            </f:facet>
+        </p:toolbar>
+        <p:panelGrid id="panGridCategoria" columns="2">
+            <p:outputLabel value="Nome:" for="txtNome"/>
+            <p:inputText id="txtNome" required="true" maxlength="50" value="#{categoriaBean.categoria.descricao}"/>
+            <p:outputLabel value="Segmento:" for="txtIdSegmento"/>
+            <p:inputText id="txtIdSegmento" required="true"  value="#{categoriaBean.categoria.id_Segmento}"/>
+            <p:outputLabel value="Categoria Superior:" for="txtIdCatSuperior"/>
+            <p:inputText id="txtIdCatSuperior" required="true" value="#{categoriaBean.categoria.id_categoria_principal}"/>
+            <p:outputLabel value="Visivel:" for="txtVisivel"/>
+            <p:inputText id="txtVisivel" required="true"/>
+            
+        </p:panelGrid>
+        <br></br>
+        <p:dataTable id="dtableCategoria" emptyMessage="Não existem categorias cadastradas"
+                     value="#{categoriaBean.listaCategoria}" var="categorias" paginator="true"
+                     rows="10" selectionMode="single" rowKey="#{categorias.id_categoria}"/>
+            <f:facet name="header">
+                <p:outputLabel value="Lista de Categorias" >
+                    
+                </p:outputLabel>
+            </f:facet>
+            <p:column headerText="Id">
+                <p:outputLabel value="#{categorias.id_categoria}"/>
+            </p:column>
+            <p:column headerText="Nome">
+                <p:outputLabel value="#{categorias.descricao}"/>
+            </p:column>
+            <p:column headerText="Visivel">
+                <p:outputLabel value="#{categorias.visivel}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+   

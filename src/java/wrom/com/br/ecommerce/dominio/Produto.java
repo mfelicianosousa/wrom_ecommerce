@@ -5,6 +5,8 @@
  */
 package wrom.com.br.ecommerce.dominio;
 
+import wrom.com.br.ecommerce.dominio.Categoria;
+
 /**
  *
  * @author marce

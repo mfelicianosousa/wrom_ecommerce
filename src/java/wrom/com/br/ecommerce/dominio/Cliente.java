@@ -23,13 +23,16 @@ public class Cliente {
     private int envia_sms ;
     private int envia_email ;
     private String cpf ;
+    private String cnpj;
     private String rg ;
+    private Endereco endereco;
+ 
     
     public Cliente(){
         
     }
     public Cliente( int id , String nome , String apelido, String sexo , String dataNascimento, String login, String email , String senha ,
-        int liberado , int envia_sms , int envia_email , String cpf , String rg ){
+        int liberado , int envia_sms , int envia_email , String cpf , String rg, Endereco endereco ){
         this.nome = nome;
         this.apelido = apelido ;
         this.sexo = sexo ;
@@ -42,6 +45,7 @@ public class Cliente {
         this.envia_email = envia_email ;
         this.cpf = cpf ;
         this.rg = rg ;
+        this.endereco = endereco ;
         }
 
     /**
@@ -226,6 +230,13 @@ public class Cliente {
         this.rg = rg;
     }
     
-    
+     public String getCnpj() {
+        return cnpj;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+   
     
 }

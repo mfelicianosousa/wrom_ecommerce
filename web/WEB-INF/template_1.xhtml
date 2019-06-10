@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100">
+                <h:outputText value="..." />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" header="Créditos" 
+                          resizable="true" closable="true" collapsible="true">
+                <h:outputText value="Copywrits WRom Studio Software Art's 2019" />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="200" header="Menu Geral" 
+                          resizable="true" closable="true" collapsible="true">
+                <h:outputText value="West" />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="east" size="200" header="Ajuda"
+                          resizable="true" closable="true" collapsible="true" effect="drop">
+                <ui:insert name="ajuda">
+                    <p:outputLabel value="Não Existe ajuda"/>
+                </ui:insert>
+                <h:outputText value="Right" />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h:form id="formConteudo">
+                    <ui:insert name="conteudo">
+                        <p:outputLabel value="Bem Vindos ..."/>
+                    </ui:insert>
+                </h:form>
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>

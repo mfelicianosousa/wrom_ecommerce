@@ -5,12 +5,19 @@
  */
 package wrom.com.br.ecommerce.dominio;
 
+import wrom.com.br.ecommerce.beans.*;
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /**
+ * Classe para administrar formulario de Categoria
+ * 
  * @author Marcelino Feliciano de Sousa
+ * Alteração em: 08/06/2016 primefaces
  * 
  */
+
 public class Categoria implements Serializable {
     private int id_categoria ;
     private int id_segmento ;
@@ -18,7 +25,7 @@ public class Categoria implements Serializable {
     private String sku ;
     private int id_categoria_principal ;
     private int visivel ; 
-
+ 
     public Categoria(){
     }
     public Categoria(int id_categoria, int id_segmento, String descricao, String sku, int id_categoria_principal, int visivel ){

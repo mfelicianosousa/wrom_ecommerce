@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Author: Marcelino Feliciano de Sousa
+    Em : 08/06/2019
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="conteudo">
+        <p:panelGrid id="panGridCategoria" columns="2">
+            <p:outputLabel value="Nome:" for="txtNome"/>
+            <p:inputText id="txtNome" required="true" maxlength="50"/>
+            
+            <p:outputLabel value="telefone:" for="txtTelefone"/>
+            <p:inputText id="txtTelefone" required="true" maxlength="14" placeholder="(99) 9999-9999"/>
+            
+            <p:outputLabel value="e-Mail:" for="txtEmail"/>
+            <p:inputText id="txtMail" required="true" maxlength="100"/> 
+            
+             <p:outputLabel value="Mensagem:" for="txtMensagem"/>
+             <p:inputTextarea id="txtMensagem" required="true" maxlength="200" rows="4" cols="100"  placeholder="Deixe sua opinião"/> 
+                    
+        </p:panelGrid>
+    </ui:define>
+</ui:composition>
+   

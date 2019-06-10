@@ -11,20 +11,23 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui">
    <h:head>
         <title>Login - Página Inicial</title>         
-        <h:outputStylesheet library="css" name="logincss.css"/>
+        <h:outputStylesheet library="css" name="wrom_login.css"/>
     </h:head>
-    <h:body>
-        <p:dialog visible="true" width="400" height="500" header="Acessar o Sistema" showHeader="false" modal="true" resizable="false">            
+    <h:form id="formLogin">
+        <p:growl id="messagesLogin"/>
+        <p:dialog visible="true" width="500" height="300" header="Acessar o Sistema" showHeader="true" modal="true" resizable="false">            
             <h:panelGrid style="margin: 0 auto;"><h:outputText styleClass="fa fa-lock fa-5x"/></h:panelGrid>
-            <h:form id="formLogin">
-                <h:panelGrid cellspacing="10">
+            <f:facet name="header">
+               <p:outputLabel value="Acessar o Sistema"/> 
+            </f:facet>
+            <h:panelGrid id="panGridUsuario"  cellspacing="10">      
                     Digite seu usuário e senha para ter acesso ao sistema:                    
-                    <p:messages id="messagesLogin"/>
-                    <p:inputText placeholder="Usuário" value="#{loginBean.login}" size="40" required="true" requiredMessage="Campo Login é obrigatório"/>
-                    <p:password placeholder="Senha" value="#{loginBean.senha}" size="40" required="true" requiredMessage="Campo Senha é obrigatório"/>
-                    <p:commandButton value="Log In" action="#{loginBean.logIn()}" update="messagesLogin"/>
-                </h:panelGrid>
-            </h:form>
+                    <p:outputLabel value="Usuário: " for="txtNomeUsuario" styleClass="etiqueta"/>
+                    <p:inputText id="txtNomeUsuario"  placeholder="Digite seu Usuário" value="#{usuario.login}" size="40" maxlength="40" required="true" requiredMessage="Login é obrigatório"/>
+                    <p:outputLabel value="Senha: " for="txtSenha" styleClass="etiqueta"/>
+                    <p:password id="txtSenha" placeholder="Digite sua Senha" value="#{usuario.senha}" size="40" maxlength="40" required="true" requiredMessage="Senha é obrigatório"/>
+                    <p:commandButton value="Log In" process="@this:formLogin:panGridUsuario" action="#{usuario.logIn()}" update=":formLogin:messagesLogin"/>
+            </h:panelGrid>
         </p:dialog>
-    </h:body>
+    </h:form>
 </html>

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import wrom.com.br.ecommerce.dominio.Moeda;
+import wrom.com.br.ecommerce.database.Conexao ;
+
 
 /**
  *
@@ -23,8 +25,10 @@ public class MoedaController {
     public static ArrayList<Moeda> Listar(){
         try {
             String sql ="{ call sp_listarMoedas() }" ;
-            Connection c=Conexao.conectar() ;
-            CallableStatement sentenca = (CallableStatement)c.prepareCall(sql);
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConexao()  ;
+            
+            CallableStatement sentenca = (CallableStatement)conn.prepareCall(sql);
             ResultSet resultado = sentenca.executeQuery();
             ArrayList<Moeda> lista = new ArrayList<>();
             while( resultado.next () ){
@@ -38,7 +42,7 @@ public class MoedaController {
             }
             return lista ;    
         } catch (SQLException ex) {
-                Logger.getLogger(MoedaController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger( MoedaController.class.getName()).log(Level.SEVERE, null, ex);
                 return null ;
         }
         

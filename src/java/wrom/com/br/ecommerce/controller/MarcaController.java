@@ -27,10 +27,10 @@ public class MarcaController {
         try {
             String sql ="{ call sp_listarTodasMarcas( ? ) }" ;
             
-            Conexao c = new Conexao();
-            Connection = c.conectar();
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConexao()  ;
           //  Connection c= Conexao.conectar() ;
-            CallableStatement sentenca = (CallableStatement)c.prepareCall(sql);
+            CallableStatement sentenca = (CallableStatement)conn.prepareCall(sql);
              sentenca.setInt(1, id_segmento );
             ResultSet resultado = sentenca.executeQuery();
             ArrayList<Marca> lista = new ArrayList<>();

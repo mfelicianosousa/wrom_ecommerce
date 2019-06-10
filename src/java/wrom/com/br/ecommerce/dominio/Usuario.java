@@ -8,12 +8,16 @@ package wrom.com.br.ecommerce.dominio;
 import java.util.Date;
 import java.util.Objects;
 import java.util.logging.Logger;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author Marcelino Feliciano de Sousa
  * 
  */
+@ManagedBean
+@ViewScoped
 public class Usuario {
     
     private int id ;
@@ -211,7 +215,7 @@ public class Usuario {
         hash = 83 * hash + Objects.hashCode(this.login);
         return hash;
     }
- @Override
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -233,6 +237,10 @@ public class Usuario {
     public String toString() {
         return nome;
     }
-    
-    
+    /*
+      Metodo para validar o usuário
+    */
+    public void login(){
+        
+    }
 }

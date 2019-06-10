@@ -24,8 +24,9 @@ public class CategoriaController {
     public static ArrayList<Categoria> Listar(){
         try {
             String sql ="{ call sp_listarCategoriaSuperior() }" ;
-            Connection c = Conexao.conectar() ;
-            CallableStatement sentenca = (CallableStatement)c.prepareCall(sql);
+             Conexao conexao = new Conexao();
+            Connection conn = conexao.getConexao()  ;
+            CallableStatement sentenca = (CallableStatement)conn.prepareCall(sql);
             ResultSet resultado = sentenca.executeQuery();
             ArrayList<Categoria> lista = new ArrayList<>();
             while( resultado.next () ){
@@ -46,8 +47,9 @@ public class CategoriaController {
     public static ArrayList<Categoria> ListarSubCategorias(int id_categoria_super ){
         try {
             String sql ="{ call sp_listarSubCategoria( ? ) }" ;
-            Connection c=Conexao.conectar() ;
-            CallableStatement sentenca = (CallableStatement)c.prepareCall(sql);
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConexao()  ;
+            CallableStatement sentenca = (CallableStatement)conn.prepareCall(sql);
             sentenca.setInt(1, id_categoria_super);
             ResultSet resultado = sentenca.executeQuery();
             ArrayList<Categoria> lista = new ArrayList<>();
@@ -68,8 +70,9 @@ public class CategoriaController {
         try {
             String sql ="{ call sp_listarTodasCategorias() }" ;
             
-            Connection c= Conexao.conectar() ;
-            CallableStatement sentenca = (CallableStatement)c.prepareCall(sql);
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConexao()  ;
+            CallableStatement sentenca = (CallableStatement)conn.prepareCall(sql);
             ResultSet resultado = sentenca.executeQuery();
             ArrayList<Categoria> lista = new ArrayList<>();
             while( resultado.next () ){
@@ -88,8 +91,9 @@ public class CategoriaController {
     public static boolean EhCategoriaSuperior(int id_categoria_super ){
         try {
             String sql ="{ call sp_ContarSubCategorias( ? ) }" ;
-            Connection c=Conexao.conectar() ;
-            CallableStatement sentenca = (CallableStatement)c.prepareCall(sql);
+            Conexao conexao = new Conexao();
+            Connection conn = conexao.getConexao()  ;
+            CallableStatement sentenca = (CallableStatement)conn.prepareCall(sql);
             sentenca.setInt(1, id_categoria_super);
             ResultSet resultado = sentenca.executeQuery();
             resultado.next() ;

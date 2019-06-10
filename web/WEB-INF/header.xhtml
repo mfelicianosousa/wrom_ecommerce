@@ -1,0 +1,24 @@
+<!--
+    Author:  Marcelino Feliciano de Sousa
+    Em 08/06/2019
+-->
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    <center>
+        <h:form id="frmHeader">
+            <p:toolbar id="toolbarHeader">
+                <p:toolbarGroup align="left" styleClass="my-toolbar-group-left">
+                    <h:outputText value="FATEC-SENAI : Projeto Integrador Web-Commerce " />
+                </p:toolbarGroup>
+                <p:toolbarGroup align="right">
+                    <p:outputLabel for="uname" value="Username:" />
+                    <p:outputLabel id="uname" value="Marcelino" />
+                </p:toolbarGroup>
+            </p:toolbar>
+        </h:form>
+    </center>
+</ui:composition>

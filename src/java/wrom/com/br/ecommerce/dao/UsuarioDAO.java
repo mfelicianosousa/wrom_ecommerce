@@ -17,8 +17,11 @@ import java.util.Date;
 
 /**
  *
- * @author marce
+ * @author marcelino Feliciano de Sousa
+ * 
+ * 
  */
+
 public class UsuarioDAO {
     private Usuario usuario ;
     

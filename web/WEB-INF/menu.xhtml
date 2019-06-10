@@ -1,0 +1,43 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+   <h:form id="frmMenu">
+        <p:menu style="width: 208px">
+            <p:submenu label="Menu">
+                <p:menuitem value="Início" action="index?faces-redirect=true"/>
+            </p:submenu>
+
+            <p:submenu label="Segurança">
+                <p:menuitem value="Perfil" action="Perfil?faces-redirect=true"/>
+                <p:menuitem value="Nivel de Acesso" action="NivelAcesso?faces-redirect=true"/>
+                <p:menuitem value="Usuarios" action="usuario?faces-redirect=true"/>
+
+            </p:submenu>
+              <p:submenu label="Loja">
+                <p:menuitem value="Segmento" action="Segmento?faces-redirect=true"/>
+                <p:menuitem value="Filial" action="Filial?faces-redirect=true"/>
+
+            </p:submenu>
+            <p:submenu label="Produtos">
+                <p:menuitem value="Categoria" action="Categoria?faces-redirect=true"/>
+                <p:menuitem value="Marca" action="Marca?faces-redirect=true"/>
+                <p:menuitem value="Produto" action="Produto?faces-redirect=true"/>
+
+            </p:submenu>
+            <p:submenu label="Geral">
+                <p:menuitem value="Moeda" action="Moeda?faces-redirect=true"/>
+                <p:menuitem value="Regiao" action="Regiao?faces-redirect=true"/>
+                <p:menuitem value="Estados" action="Estado?faces-redirect=true"/>
+                <p:menuitem value="Municipio" action="Municipio?faces-redirect=true"/>
+            </p:submenu>
+
+            <p:submenu label="Relatórios">
+                <p:menuitem value="Relatorio Pedidos " action="Relatorios?faces-redirect=true"/> 
+                <p:menuitem value="Relatorio Vendas" action="Relatorios?faces-redirect=true"/>
+            </p:submenu>
+
+        </p:menu>
+    </h:form>
+</ui:composition>

@@ -23,28 +23,40 @@ import java.util.logging.Logger;
 public class Conexao {
     
     private Connection connection ;
-    
-    public void conectar(){
-        // String urlOracle = "jdbc:oracle:thin:@localhost:1521:xe";
-        //String url ="jdbc:mysql://localhost:3306/loja_ecommerce?useTimezone=true&serverTimezone=UTC";
-        //String usuario ="root" ;
-        //String senha = "mfs@5114857" ;
-        //
+    // String urlOracle = "jdbc:oracle:thin:@localhost:1521:xe";
+    //String url ="jdbc:mysql://localhost:3306/loja_ecommerce?useTimezone=true&serverTimezone=UTC";
+    //String usuario ="root" ;
+    //String senha = "mfs@5114857" ;
+    //
 
-        //String url ="jdbc:mysql://rghost.com.br:3306/ecommerce?useTimezone=true&serverTimezone=UTC";
-        //String usuario ="rghostco_fatec" ;
-        //String senha = "pYAEx3aD" ;
-        //
+    //String url ="jdbc:mysql://rghost.com.br:3306/ecommerce?useTimezone=true&serverTimezone=UTC";
+    //String usuario ="rghostco_fatec" ;
+    //String senha = "pYAEx3aD" ;
+    //
+    private static final String url ="jdbc:mysql://wrom.com.br:3306/wrom_ecommerce?useTimezone=true&serverTimezone=UTC";
+    private static final String usuario ="wrom_wrom" ;
+    private static final String senha = "Wrom2019" ;
         
-        String url ="jdbc:mysql://localhost:3306/rom_ecommerce?useTimezone=true&serverTimezone=UTC";
-        String usuario ="root" ;
-        String senha = "mfs@5114857" ;
         
+    public static Connection Conexao(){
+      try {
+          Class.forName("com.mysql.jdbc.Driver");
+          return DriverManager.getConnection(url, usuario, senha);
+         // return DriverManager.getConnection("jdbc:mysql://localhost:3306/rom_ecommerce","root", "mfs@5114857");
+      } catch (ClassNotFoundException ex) {
+          Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (SQLException ex) {
+          Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    return null ;  
         
+    }
+    public void conectar(){
         
         try {
+            
             // Class.forName("oracle.jdbc.driver.OracleDriver") ;
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, usuario, senha);
             // Gravar arquivo de log 
           
