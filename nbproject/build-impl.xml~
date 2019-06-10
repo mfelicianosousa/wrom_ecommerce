@@ -1042,6 +1042,9 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.io.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.primefaces-6.2.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.javax.ejb-api-3.2.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.jakarta.persistence_2.2.2.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.org.eclipse.persistence.jpa.modelgen_2.7.4.v20190115-ad5b7c6b2a.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.org.eclipse.persistence.jpars_2.7.4.v20190115-ad5b7c6b2a.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.mysql-connector-java-5.1.47.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.eclipselink.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.jakarta.persistence_2.2.2.jar}" todir="${build.web.dir}/WEB-INF/lib"/>

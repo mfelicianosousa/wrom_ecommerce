@@ -10,10 +10,10 @@ public class MarcaDAOTeste {
     
     public static void main( String[] args) {
         MarcaBean marcaBean = new MarcaBean() ;
-        marcaBean.setNome("ADAPTIL");
-        marcaBean.setId_segmento(3);
-        marcaBean.setSku("ADP");
-        marcaBean.setVisivel(Boolean.TRUE);
+    //    marcaBean.setNome("ADAPTIL");
+    //    marcaBean.setId_segmento(3);
+    //    marcaBean.setSku("ADP");
+    //    marcaBean.setVisivel(Boolean.TRUE);
        
         
     }

@@ -6,7 +6,6 @@
 package wrom.com.br.ecommerce.dao;
 
 import wrom.com.br.ecommerce.database.Conexao;
-import wrom.com.br.ecommerce.dominio.Departamento;
 import wrom.com.br.ecommerce.dominio.Marca;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,12 +19,12 @@ import java.util.List;
  */
 public class MarcaDAO {
     
-    private static final String SQL_INSERT = "INSERT INTO MARCA (NOME) VALUES ( ? )" ;
-    private static final String SQL_UPDATE = "UPDATE MARCA SET NOME = ? WHERE ID_MARCA = ?";
-    private static final String SQL_DELETE = "DELETE FROM MARCA WHERE ID_MARCA = ?";
-    private static final String SQL_SELECT = "SELECT ID_MARCA,DESCRICAO FROM MARCA " ;
-    private static final String SQL_SELECT_POR_ID = "SELECT ID_MARCA,MARCA FROM MARCA WHERE ID_MARCA = ? ";
-    private static final String SQL_SELECT_MARCA = "SELECT ID_MARCA,NOME FROM MARCA ORDER BY NOME ";
+    private static final String SQL_INSERT = "INSERT INTO marcas (NOME) VALUES ( ? )" ;
+    private static final String SQL_UPDATE = "UPDATE marcas SET NOME = ? WHERE ID_MARCA = ?";
+    private static final String SQL_DELETE = "DELETE FROM marcas WHERE ID_MARCA = ?";
+    private static final String SQL_SELECT = "SELECT ID_MARCA,NOME FROM marcas " ;
+    private static final String SQL_SELECT_POR_ID = "SELECT ID_MARCA,ID_SEGMENTO,NOME FROM marcas WHERE ID_MARCA = ? ";
+    private static final String SQL_SELECT_MARCA = "SELECT ID_MARCA,ID_SEMENTO,NOME FROM marcas ORDER BY NOME ";
   
     PreparedStatement psInsert, psDelete, psUpdate, psSelect, psSelectPorId, psSelectMarca ;
     
@@ -75,10 +74,7 @@ public class MarcaDAO {
         }
         
     }
-     public void getSelecaoDepartamento (){
-         
-         
-    }
+
     public void excluir (int id ){
         try{
             // troca os ? pelos dados 
@@ -92,10 +88,10 @@ public class MarcaDAO {
         
     }
     
-    public List<Marca> read(){
+    public List<Marca> listarTodos(){
         List<Marca> marcas = new ArrayList<>();
         try { 
-          ResultSet result = psSelectMarca.executeQuery();
+          ResultSet result = psSelect.executeQuery();
           while (result.next()){
             Marca marca  = new Marca();
             marca.setId(result.getInt(1));

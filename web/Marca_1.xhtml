@@ -1,53 +1,63 @@
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Marcelino Feliciano de Sousa
+   Em 10/06/2019
+-->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
-   
-    <ui:define name="conteudo">    
+    <ui:define name="conteudo">
         <p:growl id="mensagem"/>
          <p:toolbar> 
             <f:facet name="right">
-                <p:commandButton value="Novo" icon="ui-icon-document" ajax="false" actionListener="#{segmentoBean.novo}"  />
+                <p:commandButton value="Novo" icon="ui-icon-document" ajax="false" actionListener="#{marcaBean.novo} />
                 <p:commandButton value="Salvar" icon="ui-icon-disk"
-                                 process="@this:frmConteudo:panelGrid"  ajax="false"  actionListener="#{segmentoBean.salvar}"
+                process="@this:frmConteudo:panelGrid"  ajax="false"  actionListener="#{marcaBean.salvar}"
                                  update=":frmConteudo:mensagem :frmConteudo:dataTab :frmConteudo:panelGrid"/>
                  <span class="ui-separator">
                     <span class="ui-icon pi pi-ellipsis-v" />
                 </span>
                      <p:commandButton value="Editar" icon="ui-icon-pencil" ajax="false" 
-                                      process="@this" actionListener="#{segmentoBean.editar}"
+                                      process="@this" actionListener="#{marcaBean.editar()}"
                                       update=":frmConteudo:mensagem :frmConteudo:dataTab :frmConteudo:panelGrid"
                                       />
                      <p:commandButton value="Excluir" icon="ui-icon-trash" onclick="PF('dialogoConfirmar').show();"/>
             </f:facet>
         </p:toolbar>
         <p:panelGrid id="panelGrid" columns="2">
+            
+            <p:outputLabel value="Segmento Marca: " for="cmbSegmento"/>
+            <p:selectOneMenu id="cmbSegmento" required="true" effect="drop" value="">
+                <f:selectItem itemLabel="Selecione uma opção da lista" noSelectionOption="true"/>
+                <f:selectItems value=""/>
+            </p:selectOneMenu>
+            
+            
             <p:outputLabel value="Nome: " for="txtNome"/>
-            <p:inputText id="txtNome" required="true" maxlength="50" value="#{segmentoBean.segmento.nome}" />
+            <p:inputText id="txtNome" required="true" maxlength="50" value="#{marcaBean.marca.nome}" />
         </p:panelGrid>
         <br></br>
-        <p:dataTable id="dataTab" emptyMessage="Não existem Segmentos cadastradas"
-                     value="#{segmentoBean.listaSegmento}" var="curSegmento" paginator="true"
-                     rows="10" selectionMode="Single" rowKey="#{curSegmento.id}">
+        <p:dataTable id="dataTab" emptyMessage="Não existem registros cadastradas"
+                     value="#{marcaBean.listaMarcas}" var="cursor" paginator="true"
+                     rows="10" selectionMode="Single" rowKey="#{cursor.id}">
             <f:facet name="header"> 
-                <p:outputLabel value="Lista de Segmentos"/>
+                <p:outputLabel value="Lista de Marcas"/>
             </f:facet>
-            <p:ajax event="rowSelect" listener="#{curSegmento.selecionarRegistro}"/> 
+            <p:ajax event="rowSelect" listener="#{cursor.selecionarRegistro}"/> 
             <p:column headerText="Id">
-                <p:outputLabel value="#{curSegmento.id}"/>
+                <p:outputLabel value="#{cursor.id}"/>
             </p:column>
             <p:column headerText="Nome">
-                <p:outputLabel value="#{curSegmento.nome}"/>
+                <p:outputLabel value="#{cursor.nome}"/>
             </p:column>
         </p:dataTable>
         <p:dialog widgetVar="dialogoConfirmacao" header="Confirmar Exclusão" width="200" height="100">
             <p:panelGrid columns="3">
                 <p:outputLabel value="Confirma a exclusão do registro?"/>
-                <p:commandButton value="Sim" process="@this" actionListener="#{segmentoBean.eliminar}"
+                <p:commandButton value="Sim" process="@this" actionListener="#{marcaBean.eliminar}"
                                  update=":frmConteudo:mensagem :frmConteudo:dataTab"
                                  oncomplete="PF('dialogoConfirmar').hide();"/>
                 <p:commandButton value='Nao' onclick="PF('dialogoConfirmar').hide()" />
@@ -56,5 +66,5 @@
         </p:dialog>
         
         
-      </ui:define>
+    </ui:define>
 </ui:composition>

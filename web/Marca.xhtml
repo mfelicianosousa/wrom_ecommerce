@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Marcelino Feliciano de Sousa
+   Em 10/06/2019
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="conteudo">
+        <p:toolbar> 
+            <f:facet name="right">
+                <p:commandButton value="Novo" icon="ui-icon-document" ajax="false" actionListener="#{marcaBean.novo}" />
+                <p:commandButton value="Salvar" icon="ui-icon-disk"
+                process="@this:frmConteudo:panelGrid"  ajax="false"  actionListener="#{marcaBean.salvar}"
+                                 update=":frmConteudo:mensagem :frmConteudo:dataTab :frmConteudo:panelGrid"/>
+                <span class="ui-separator">
+                    <span class="ui-icon pi pi-ellipsis-v" />
+                </span>
+                <p:commandButton value="Editar" icon="ui-icon-pencil" ajax="false" 
+                                      process="@this" actionListener="#{marcaBean.editar()}"
+                                      update=":frmConteudo:mensagem :frmConteudo:dataTab :frmConteudo:panelGrid"/>
+                <p:commandButton value="Excluir" icon="ui-icon-trash" onclick="PF('dialogoConfirmar').show();"/>
+            </f:facet>
+        </p:toolbar>
+        <p:panelGrid id="panelGrid" columns="2">
+            
+            <p:outputLabel value="Segmento Marca: " for="cmbSegmento"/>
+            <p:selectOneMenu id="cmbSegmento" required="true" effect="drop" value="#{marcaBean.marca.segmento}"
+                             converter="#{converteSegmento}">
+                <f:selectItem itemLabel="Selecione uma opção da lista" noSelectionOption="true"/>
+                <f:selectItems value="#{marcaBean.listaSegmentos}" var="segmento" 
+                               itemLabel="#{segmento.nome}" itemValue="#{segmento}"/>
+            </p:selectOneMenu>
+            
+            
+            <p:outputLabel value="Nome: " for="txtNome"/>
+            <p:inputText id="txtNome" required="true" maxlength="50" value="#{marcaBean.marca.nome}" />
+        </p:panelGrid>
+        <br></br>
+        <p:dataTable id="dataTab" emptyMessage="Não existem registros cadastrados"
+                     value="#{marcaBean.listaMarcas}" var="cursor" paginator="true"
+                     rows="10" selectionMode="Single" rowKey="#{cursor.id}">
+            <f:facet name="header"> 
+                <p:outputLabel value="Lista de Marcas"/>
+            </f:facet>
+            <p:ajax event="rowSelect" listener="#{cursor.selecionarRegistro}"/> 
+            <p:column headerText="Id">
+                <p:outputLabel value="#{cursor.id}"/>
+            </p:column>
+            <p:column headerText="Nome">
+                <p:outputLabel value="#{cursor.nome}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>

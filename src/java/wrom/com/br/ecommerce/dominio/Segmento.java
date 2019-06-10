@@ -8,6 +8,7 @@ package wrom.com.br.ecommerce.dominio;
 import wrom.com.br.ecommerce.beans.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,22 +46,31 @@ public class Segmento implements Serializable{
     public void setNome(String nome) {
         this.nome = nome;
     }
-     
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
+        hash = 47 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Segmento)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Segmento other = (Segmento) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Segmento other = (Segmento) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -68,8 +78,11 @@ public class Segmento implements Serializable{
 
     @Override
     public String toString() {
-        return "wrom.com.br.ecommerce.dominio.Segmento[ id_Segmento=" + id + " ]";
+        return nome ;
     }
+
+ 
+    
 
     public Segmento() {
        

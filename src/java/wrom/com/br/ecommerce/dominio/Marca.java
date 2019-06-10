@@ -16,6 +16,9 @@ public class Marca implements Serializable {
     private int id ;
     private String nome ;
     private Boolean visivel ; 
+    private Segmento segmento ;   
+
+  
     
     public Marca(){
         
@@ -69,4 +72,11 @@ public class Marca implements Serializable {
         this.visivel = visivel;
     }
     
+      public Segmento getSegmento() {
+        return segmento;
+    }
+
+    public void setSegmento(Segmento segmento) {
+        this.segmento = segmento;
+    }
 }

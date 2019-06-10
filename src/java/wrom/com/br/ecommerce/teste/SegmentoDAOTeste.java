@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import wrom.com.br.ecommerce.beans.SegmentoBean;
-import wrom.com.br.ecommerce.dao.SegmentoDao;
+import wrom.com.br.ecommerce.dao.SegmentoDAO;
 import wrom.com.br.ecommerce.dominio.Segmento;
 
 
@@ -25,7 +25,7 @@ public class SegmentoDAOTeste {
         List<Segmento> listaSegmento ;
         ArrayList<Segmento> segmento = new ArrayList<>();
       
-        SegmentoDao dao = new SegmentoDao() ;
+        SegmentoDAO dao = new SegmentoDAO() ;
         List<Segmento> listasegmento = dao.listarTodos();
         
         

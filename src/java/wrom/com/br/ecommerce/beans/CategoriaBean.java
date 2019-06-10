@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import wrom.com.br.ecommerce.dominio.Categoria;
+import wrom.com.br.ecommerce.dominio.Segmento;
 
 /**
  * Classe para administrar formulario de Categoria
@@ -20,40 +21,24 @@ import wrom.com.br.ecommerce.dominio.Categoria;
  * 
  */
 @ManagedBean
+@ViewScoped
 public class CategoriaBean {
     private Categoria categoria ; // Categoria Nova
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public Categoria getCategoriaSelecao() {
-        return categoriaSelecao;
-    }
-
-    public void setCategoriaSelecao(Categoria categoriaSelecao) {
-        this.categoriaSelecao = categoriaSelecao;
-    }
-
-    public List<Categoria> getListaCategoria() {
-        return ListaCategoria;
-    }
-
-    public void setListaCategoria(List<Categoria> ListaCategoria) {
-        this.ListaCategoria = ListaCategoria;
-    }
+    private Categoria categoriasel ;
+    private List<Segmento> listaSegmentos ;
+    private List<Categoria> ListaCategorias ;
+    private List<Categoria> listaCategoriaSuperior;
+     
     private Categoria categoriaSelecao ; // selecionar um produto na tabela
-    private List<Categoria> ListaCategoria ; // Mostrar todos os tipos de produto
-
+ 
     public CategoriaBean(){
         this.categoria = new Categoria() ;
-        this.ListaCategoria = new ArrayList<>();
+        this.listaSegmentos = new ArrayList<>();
+        this.ListaCategorias = new ArrayList<>();
+        this.listaCategoriaSuperior = new ArrayList<>();
+        
     }
-       
+ 
     public void Salvar(){
         
     }
@@ -73,4 +58,54 @@ public class CategoriaBean {
     public void inicializar(){
         carregarCategoria();
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Categoria getCategoriasel() {
+        return categoriasel;
+    }
+
+    public void setCategoriasel(Categoria categoriasel) {
+        this.categoriasel = categoriasel;
+    }
+
+    public List<Segmento> getListaSegmentos() {
+        return listaSegmentos;
+    }
+
+    public void setListaSegmentos(List<Segmento> listaSegmentos) {
+        this.listaSegmentos = listaSegmentos;
+    }
+
+    public List<Categoria> getListaCategorias() {
+        return ListaCategorias;
+    }
+
+    public void setListaCategorias(List<Categoria> ListaCategorias) {
+        this.ListaCategorias = ListaCategorias;
+    }
+
+    public List<Categoria> getListaCategoriaSuperior() {
+        return listaCategoriaSuperior;
+    }
+
+    public void setListaCategoriaSuperior(List<Categoria> listaCategoriaSuperior) {
+        this.listaCategoriaSuperior = listaCategoriaSuperior;
+    }
+
+    public Categoria getCategoriaSelecao() {
+        return categoriaSelecao;
+    }
+
+    public void setCategoriaSelecao(Categoria categoriaSelecao) {
+        this.categoriaSelecao = categoriaSelecao;
+    }
+    
+    
 }

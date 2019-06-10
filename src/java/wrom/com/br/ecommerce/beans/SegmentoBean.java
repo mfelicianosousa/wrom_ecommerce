@@ -5,7 +5,7 @@
  */
 package wrom.com.br.ecommerce.beans;
 import wrom.com.br.ecommerce.dominio.Segmento ;
-import wrom.com.br.ecommerce.dao.SegmentoDao;
+import wrom.com.br.ecommerce.dao.SegmentoDAO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import wrom.com.br.ecommerce.utils.AbstractManagedBean;
 public class SegmentoBean extends AbstractManagedBean {
 
     private Segmento segmento ;
-    private final SegmentoDao segmentoDao ;
+    private final SegmentoDAO segmentoDao ;
     private Segmento segmentoSel ;
     private List<Segmento> listaSegmento ;
     
@@ -41,7 +41,7 @@ public class SegmentoBean extends AbstractManagedBean {
     public SegmentoBean(){
         this.segmento = new Segmento() ;
         this.listaSegmento = new ArrayList<>() ;
-        this.segmentoDao = new SegmentoDao();
+        this.segmentoDao = new SegmentoDAO();
     }
 
     public Segmento getSegmento() {
@@ -72,15 +72,13 @@ public class SegmentoBean extends AbstractManagedBean {
         try {
             if (segmento.getId() == null) {
               segmentoDao.inserir(segmento);
-               
             } else {
-                
               segmentoDao.alterar(segmento);
-              
             }
-            //carregar();
-              adicionarMensagemInfo("Registro salvo com sucesso") ;
-          
+            adicionarMensagemInfo("Registro salvo com sucesso") ;
+            carregar();
+            novo();
+            
             //novo() ;
         } catch (Exception ex ) {
             adicionarMensagemInfo("Registro não foi salvo") ;
@@ -91,16 +89,17 @@ public class SegmentoBean extends AbstractManagedBean {
     public void selecionarRegistro( SelectEvent e ){
         this.segmentoSel = (Segmento) e.getObject() ;
     }
+    
     public void eliminar(){
         try{
           if (this.segmentoSel != null){
             segmentoDao.excluir( segmentoSel.getId() )  ;
             carregar();
             novo() ;
-             adicionarMensagemInfo("Registro eliminado com sucesso " );
+            adicionarMensagemInfo("Registro eliminado com sucesso " );
               
           } else {
-              adicionarMensagemInfo("Favor selecionar um Segmento " );
+            adicionarMensagemInfo("Favor selecionar um Segmento " );
               
           }
         }catch(Exception ex){
@@ -121,7 +120,7 @@ public class SegmentoBean extends AbstractManagedBean {
         }
     }
     private void carregar(){
-        // SegmentoDao segmentoDao = new SegmentoDao();
+        // SegmentoDAO segmentoDao = new SegmentoDAO();
         try{
             this.listaSegmento = segmentoDao.listarTodos() ;
         } catch (Exception ex){
